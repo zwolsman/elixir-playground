@@ -20,4 +20,24 @@ defmodule Income do
   def tax(salary) when salary <= 3000, do: 0.05
   def tax(salary) when salary <= 6000, do: 0.1
   def tax(salary), do: 0.15
+
+  def read_input() do
+    input = IO.gets("Please enter your salary:\n")
+
+    case Integer.parse(input) do
+      {salary, _} ->
+        salary
+
+      _ ->
+        IO.puts("Invalid input '#{String.trim(input)}'")
+        read_input()
+    end
+  end
 end
+
+# Create an Elixir script where users can type their salary and see the income tax and the net wage. You can use the module from the previous exercise, but this script should parse the user input and display a message when users type something that is not a valid number.
+
+salary = Income.read_input()
+tax = Income.tax(salary)
+net_wage = salary * (1 - tax)
+IO.puts("Your net wage is #{net_wage}, the total tax is #{tax * 100}%")
