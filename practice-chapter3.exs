@@ -19,7 +19,7 @@ defmodule Income do
   def tax(salary) when salary <= 2000, do: 0
   def tax(salary) when salary <= 3000, do: 0.05
   def tax(salary) when salary <= 6000, do: 0.1
-  def tax(salary), do: 0.15
+  def tax(_), do: 0.15
 
   def read_input() do
     input = IO.gets("Please enter your salary:\n")
